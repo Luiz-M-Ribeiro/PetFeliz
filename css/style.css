@@ -1,0 +1,153 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #fdfdfd;
+    color: #333;
+  }
+  
+  header {
+    background-color: #26a69a;
+    color: white;
+    padding-right: 6px;
+  }
+  
+  h1{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav a{
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;   
+  }
+
+  nav{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .banner {
+    background: url('img/banner.jpg') center/cover;
+    color: white;
+    padding: 0px 20px;
+    text-align: center;
+  }
+  
+  .produtos {
+    text-align: center;
+  }
+  
+  .produtos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .produto-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: 250px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .produto-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .preco {
+    font-size: 18px;
+    color: #00796b;
+    margin: 10px 0;
+    display: block;
+  }
+  
+  .botao {
+    display: inline-block;
+    background-color: #26a69a;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .botao:hover {
+    background-color: #00796b;
+  }
+  
+  .produto-detalhe {
+    display: flex;
+    padding: 40px;
+    gap: 30px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .produto-detalhe img {
+    max-width: 400px;
+    border-radius: 12px;
+  }
+  
+  .produto-detalhe .info {
+    max-width: 500px;
+  }
+  
+  .botao-comprar {
+    background-color: #00796b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .botao-comprar:hover {
+    background-color: #004d40;
+  }
+  
+  footer {
+    background-color: #26a69a;
+    color: white;
+    text-align: center;
+    padding: 0px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+  }
+  
+  #carrinho {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #carrinho li {
+    background: #f5f5f5;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  
+  

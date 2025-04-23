@@ -1,67 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resumo do Carrinho</title>
   <link rel="stylesheet" href="css/style.css">
-    <header>
-      <div class="container">
-        <h1>🐾 Pet Feliz</h1>
-        <nav>
-          <a href="index.html">Início</a>
-          <a href="produto.html">Produtos</a>
-          <a href="carrinho.html">Carrinho</a>
-          <a href="login.html">Entrar</a>
-        </nav>
-      </div>
-    </header>
 </head>
-
 <body>
-    <h1>Seu Carrinho</h1>
-    <ul id="lista-carrinho"></ul>
-    <p>Total: R$ <span id="total-compra">0.00</span></p>
-  
-    <script>
-      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      const total = localStorage.getItem("total") || "0.00";
-  
-      const listaCarrinho = document.getElementById("lista-carrinho");
-      const totalCompra = document.getElementById("total-compra");
+  <header>
+    <div class="container">
+      <h1>🐾 Pet Feliz</h1>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="produto.html">Produtos</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="login.html">Entrar</a>
+      </nav>
+    </div>
+  </header>
 
-      function atualizarCarrinho() {
-      listaCarrinho.innerHTML = "";
-      let total = 0;
-  
-      carrinho.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}
-        <button onclick="removerItem(${index})">Remover</button>
-        `;
-        listaCarrinho.appendChild(li);
-      });
+  <h1>Seu Carrinho</h1>
+  <ul id="carrinho"></ul>
+  <p>Total: R$ <span id="total">0.00</span></p>
 
-      totalCompra.textContent = total.toFixed(2);
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      localStorage.setItem("total", total.toFixed(2));
-    }
+  <script src="script.js"></script>
+  <script>
+    atualizarCarrinho();
+  </script>
 
-    function removerItem(index) {
-      carrinho.splice(index, 1);
-
-      atualizarCarrinho();
-    }
-  
-      totalCompra.textContent = total;
-      
-    </script>
-  
-     <h2>Carrinho</h2>
-     <ul id="carrinho"></ul>
-     <p>Total: R$ <span id="total">0.00</span></p>
-   
-     <script src="script.js"></script>
-
-  </body>
-  </html>
+  <footer>
+    <p>&copy; 2025 Pet Feliz - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>

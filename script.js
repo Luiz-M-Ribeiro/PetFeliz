@@ -1,30 +1,40 @@
-let carrinho = [];
-let total = 0;
-
 function adicionarAoCarrinho(nome, preco) {
-    carrinho.push({ nome, preco });
-    total += preco;
-    salvarCarrinho();
-    atualizarCarrinho();
-  }
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  let total = parseFloat(localStorage.getItem("total")) || 0;
 
-  function removerDoCarrinho(index) {
-    total -= carrinho[index].preco;
-    carrinho.splice(index, 1);
-    salvarCarrinho();
-    atualizarCarrinho();
-  }
+  carrinho.push({ nome, preco });
+  total += preco;
 
-  function salvarCarrinho() {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    localStorage.setItem("total", total.toFixed(2));
-  }
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  localStorage.setItem("total", total.toFixed(2));
 
-  function atualizarCarrinho() {
-   const listaCarrinho = document.getElementById("carrinho");
-   const totalElemento = document.getElementById("total");
+  alert(`${nome} adicionado ao carrinho!`);
+}
+
+function removerDoCarrinho(index) {
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  let total = parseFloat(localStorage.getItem("total")) || 0;
+
+  total -= carrinho[index].preco;
+  carrinho.splice(index, 1);
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  localStorage.setItem("total", total.toFixed(2));
+
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  let total = parseFloat(localStorage.getItem("total")) || 0;
+
+  const listaCarrinho = document.getElementById("carrinho") || document.getElementById("lista-carrinho");
+  const totalElemento = document.getElementById("total") || document.getElementById("total-compra");
+
+  if (!listaCarrinho || !totalElemento) return;
 
   listaCarrinho.innerHTML = "";
+
   carrinho.forEach((item, index) => {
     const li = document.createElement("li");
     li.innerHTML = `
@@ -36,10 +46,4 @@ function adicionarAoCarrinho(nome, preco) {
 
   totalElemento.textContent = total.toFixed(2);
 }
-
-
-  
-  
-  
-  
-  
+ 

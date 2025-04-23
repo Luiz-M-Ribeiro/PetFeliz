@@ -14,7 +14,8 @@
         <a href="index.html">Início</a>
         <a href="produto.html">Produtos</a>
         <a href="carrinho.html">Carrinho</a>
-        <a href="login.html">Entrar</a>
+        <a href="login.html" id="loginLink">Entrar</a>
+        <span id="userLogado"></span>
       </nav>
     </div>
   </header>
@@ -25,24 +26,24 @@
       <h2>Ração Premium - 10kg</h2>
       <p>Composta por ingredientes selecionados para uma nutrição completa. Ideal para cães adultos de médio e grande porte.</p>
       <span class="preco">R$ 89,90</span>
-      <button onclick="adicionarAoCarrinho('Produto 1', 89,90)">Adicionar ao Carrinho</button>
+      <button onclick="adicionarAoCarrinho('Ração Premium - 10kg', 89.90)">Adicionar ao Carrinho</button>
     </div>
 
     <img src="img/coleira.jpeg" alt="Coleira Estilosa">
     <div class="info">
       <h2>Coleira Estilosa</h2>
-      <p>Uma coleira estilosa de couro vermelha e beje por dentro, com um estilo de um osso com diamantes.</p>
+      <p>Uma coleira estilosa de couro vermelha e bege por dentro, com um estilo de um osso com diamantes.</p>
       <span class="preco">R$ 39,90</span>
-      <button onclick="adicionarAoCarrinho('Produto 2', 39,90)">Adicionar ao Carrinho</button>
+      <button onclick="adicionarAoCarrinho('Coleira Estilosa', 39.90)">Adicionar ao Carrinho</button>
     </div>
   </section>
 
+  <script src="script.js"></script>
   <script>
-    // Mostrar nome ou botão sair
     const usuario = localStorage.getItem("usuarioLogado");
     const loginLink = document.getElementById("loginLink");
     const userLogado = document.getElementById("userLogado");
-  
+
     if (usuario) {
       loginLink.style.display = "none";
       userLogado.innerHTML = `
@@ -50,13 +51,12 @@
         <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
       `;
     }
-  
+
     function logout() {
       localStorage.removeItem("usuarioLogado");
       window.location.reload();
     }
-    
-  </script>  
+  </script>
 
   <footer>
     <p>&copy; 2025 Pet Feliz - Todos os direitos reservados</p>

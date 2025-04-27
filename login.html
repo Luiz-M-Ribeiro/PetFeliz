@@ -15,7 +15,8 @@
         <a href="index.html">Início</a>
         <a href="produto.html">Produtos</a>
         <a href="carrinho.html">Carrinho</a>
-        <a href="login.html">Entrar</a>
+        <a href="login.html" id="loginlink">Entrar</a>
+        <span id="userLogado"></span>
       </nav>
     </div>
   </header>
@@ -35,6 +36,59 @@
       <p class="signup-link">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
     </form>
   </div>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+    
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+    
+      try {
+        const resposta = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, senha })
+        });
+    
+        if (resposta.ok) {
+          const dados = await resposta.json();
+          alert(dados.mensagem);
+          localStorage.setItem('usuarioLogado', dados.nome);
+          window.location.href = 'index.html'; // Vai pra página inicial
+        } else {
+          const erro = await resposta.text();
+          alert(erro);
+        }
+      } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        alert('Erro ao fazer login!');
+      }
+    });
+
+const usuarioLogado = localStorage.getItem("usuarioLogado");
+const loginLink = document.getElementById("loginLink");
+const userLogado = document.getElementById("userLogado");
+
+if (usuarioLogado) {
+  if (loginLink) loginLink.style.display = "none";
+  if (userLogado) {
+    userLogado.innerHTML = `
+      Bem-vindo, ${usuarioLogado} |
+      <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
+    `;
+  }
+}
+
+function logout() {
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "index.html"; // voltar pra home
+}
+
+    </script>
+    
 </body>
 </html>
 

@@ -20,41 +20,115 @@
     </div>
   </header>
 
-  <section class="produto-detalhe">
-    <img src="img/ração.jpg" alt="Ração Premium">
-    <div class="info">
-      <h2>Ração Premium - 10kg</h2>
-      <p>Composta por ingredientes selecionados para uma nutrição completa. Ideal para cães adultos de médio e grande porte.</p>
-      <span class="preco">R$ 89,90</span>
-      <button onclick="adicionarAoCarrinho('Ração Premium - 10kg', 89.90)">Adicionar ao Carrinho</button>
-    </div>
+  <section class="produto-detalhe" id="detalhesProduto">
 
-    <img src="img/coleira.jpeg" alt="Coleira Estilosa">
-    <div class="info">
-      <h2>Coleira Estilosa</h2>
-      <p>Uma coleira estilosa de couro vermelha e bege por dentro, com um estilo de um osso com diamantes.</p>
-      <span class="preco">R$ 39,90</span>
-      <button onclick="adicionarAoCarrinho('Coleira Estilosa', 39.90)">Adicionar ao Carrinho</button>
-    </div>
   </section>
 
-  <script src="script.js"></script>
   <script>
-    const usuario = localStorage.getItem("usuarioLogado");
+    window.onload = function() {
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const produtoId = urlParams.get('produto');
+
+      exibirProduto(produtoId);
+    }
+
+    function exibirProduto(produtoId) {
+      const detalhesProduto = document.getElementById('detalhesProduto');
+
+      let produtoHTML = '';
+
+      switch (produtoId) {
+        case 'ração-premium':
+          produtoHTML = `
+            <img src="img/ração.jpg" alt="Ração Premium">
+            <div class="info">
+              <h2>Ração Premium - 10kg</h2>
+              <p>Composta por ingredientes selecionados para uma nutrição completa. Ideal para cães adultos de médio e grande porte.</p>
+              <span class="preco">R$ 89,90</span>
+              <button onclick="adicionarAoCarrinho('Ração Premium - 10kg', 89.90)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+          
+        case 'coleira-estilosa':
+          produtoHTML = `
+            <img src="img/coleira.jpeg" alt="Coleira Estilosa">
+            <div class="info">
+              <h2>Coleira Estilosa</h2>
+              <p>Uma coleira estilosa de couro vermelha e bege por dentro, com um estilo de um osso com diamantes.</p>
+              <span class="preco">R$ 39,90</span>
+              <button onclick="adicionarAoCarrinho('Coleira Estilosa', 39.90)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'brinquedo-interativo':
+          produtoHTML = `
+            <img src="img/brinquedo.jpeg" alt="Brinquedo Interativo">
+            <div class="info">
+              <h2>Brinquedo Interativo</h2>
+              <p>Um brinquedo interativo para o seu pet brincar e morder o dia todo.</p>
+              <span class="preco">R$ 49,90</span>
+              <button onclick="adicionarAoCarrinho('Brinquedo Interativo', 49.90)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'cama-pet':
+          produtoHTML = `
+            <img src="img/cama.jpeg" alt="Cama Pet Confortável">
+            <div class="info">
+              <h2>Cama Pet Confortável</h2>
+              <p>Uma cama confortável para o seu pet dormir, tamanhos variáveis.</p>
+              <span class="preco">R$ 159,90</span>
+              <button onclick="adicionarAoCarrinho('Cama Pet Confortável', 159.90)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+        default:
+          produtoHTML = `<p>Produto não encontrado.</p>`;
+      }
+
+      detalhesProduto.innerHTML = produtoHTML;
+    }
+
+    function adicionarAoCarrinho(nomeProduto, precoProduto) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      const produtoExistente = carrinho.find(item => item.nome === nomeProduto);
+
+      if (produtoExistente){
+        produtoExistente.quantidade++;
+      }else{
+        carrinho.push({nome: nomeProduto, preco: precoProduto, quantidade: 1});
+      }
+
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+      let total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+      localStorage.setItem("total",total.toFixed(2));
+
+      alert(`${nomeProduto} Foi adicionado ao carrinho!`);
+    }
+
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
     const loginLink = document.getElementById("loginLink");
     const userLogado = document.getElementById("userLogado");
 
-    if (usuario) {
-      loginLink.style.display = "none";
-      userLogado.innerHTML = `
-        Bem-vindo, ${usuario} |
-        <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
-      `;
+    if (usuarioLogado) {
+      if (loginLink) loginLink.style.display = "none";
+      if (userLogado) {
+        userLogado.innerHTML = `
+          Bem-vindo, ${usuarioLogado} |
+          <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
+        `;
+      }
     }
 
     function logout() {
       localStorage.removeItem("usuarioLogado");
-      window.location.reload();
+      window.location.href = "index.html";
     }
   </script>
 
@@ -63,3 +137,4 @@
   </footer>
 </body>
 </html>
+

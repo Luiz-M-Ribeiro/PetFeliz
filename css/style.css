@@ -9,9 +9,10 @@ body {
     background-color: #26a69a;
     color: white;
     padding-right: 6px;
+    background: linear-gradient(90deg, #26a69a 0%, #00796b 100%);
   }
   
-  h1{
+  h1 {
     display: flex;
     width: 100%;
     justify-content: flex-start;
@@ -27,27 +28,27 @@ body {
     align-items: center;
   }
   
-  nav a{
+  nav a {
     margin-left: 10px;
     color: white;
     text-decoration: none;
     font-weight: bold;   
   }
 
-  nav{
+  nav {
     display: flex;
     width: 100%;
     justify-content: flex-end;
   }
   
   .banner {
-    background: url('img/banner.jpg') center/cover no-repeat;
-    padding: 100px 20px;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/banner-pet.jpg') center/cover no-repeat;
+    padding: 150px 20px;
     text-align: center;
     color: white;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
     border-bottom: 4px solid #26a69a;
   }
   
@@ -69,6 +70,12 @@ body {
     width: 250px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .produto-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   }
   
   .produto-card img {
@@ -92,10 +99,12 @@ body {
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .botao:hover {
-    background-color: #00796b;
+    transform: scale(1.05);
+    background-color: #004d40;
   }
   
   .produto-detalhe {

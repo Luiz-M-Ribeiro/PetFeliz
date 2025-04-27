@@ -46,4 +46,25 @@ function atualizarCarrinho() {
 
   totalElemento.textContent = total.toFixed(2);
 }
+
+function finalizarCompra(){
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  let total = parseFloat(localStorage.getItem("total")) || 0;
+
+  if (carrinho.length === 0){
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  alert(`Compra realizada com sucesso!\nTotal: R$ ${total.toFixed(2)}\nProdutos: ${carrinho.length}`);
+
+  localStorage.removeItem('carrinho');
+  localStorage.removeItem('total');
+
+  atualizarCarrinho();
+
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 2000);
+}
  

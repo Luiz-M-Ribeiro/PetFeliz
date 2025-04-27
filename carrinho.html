@@ -14,7 +14,8 @@
         <a href="index.html">Início</a>
         <a href="produto.html">Produtos</a>
         <a href="carrinho.html">Carrinho</a>
-        <a href="login.html">Entrar</a>
+        <a href="login.html" id="loginLink">Entrar</a>
+        <span id="userLogado"></span>
       </nav>
     </div>
   </header>
@@ -22,9 +23,115 @@
   <h1>Seu Carrinho</h1>
   <ul id="carrinho"></ul>
   <p>Total: R$ <span id="total">0.00</span></p>
+  <button onclick="finalizarCompra()" id="botaoFinalizar">Finalizar Compra</button>
 
   <script src="script.js"></script>
   <script>
+    
+    function adicionarAoCarrinho(nomeProduto, preco) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      const produtoExistente = carrinho.find(item => item.nome === nomeProduto);
+
+      if (produtoExistente){
+        produtoExistente.quantidade++;
+
+      }else {
+        carrinho.push({ nome: nomeProduto, preco: preco, quantidade: 1});
+      }
+
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+      atualizarTotalCarrinho(carrinho);
+    }
+
+    function atualizarTotalCarrinho(carrinho){
+      let total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+      localStorage.setItem("total", total.toFixed(2));
+    }
+
+    function atualizarCarrinho() {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      const listaCarrinho = document.getElementById("carrinho");
+      const totalElemento = document.getElementById("total");
+
+      listaCarrinho.innerHTML = "";
+
+      if (carrinho.length === 0) {
+
+        listaCarrinho.innerHTML = "<li>Seu carrinho está vazio.</li>";
+
+      }else{
+
+      carrinho.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${item.nome} - R$ ${item.preco.toFixed(2)} x ${item.quantidade}
+          <button onclick="removerDoCarrinho(${index})">Remover</button>
+        `;
+        listaCarrinho.appendChild(li);
+      });
+    }
+
+      let total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+      totalElemento.textContent = total.toFixed(2);
+  }    
+
+    function removerDoCarrinho(index) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      let total = parseFloat(localStorage.getItem("total")) || 0;
+
+      total -= carrinho[index].preco * carrinho[index].quantidade;
+      carrinho.splice(index, 1);
+
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      localStorage.setItem("total", total.toFixed(2));
+
+      atualizarCarrinho();
+    }
+
+    function finalizarCompra() {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      let total = parseFloat(localStorage.getItem("total")) || 0;
+
+      if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+      }
+
+      alert(`Compra realizada com sucesso!\nTotal: R$ ${total.toFixed(2)}\nProdutos: ${carrinho.length}`);
+
+      localStorage.removeItem('carrinho');
+      localStorage.removeItem('total');
+
+      atualizarCarrinho();
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
+    }
+
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const loginLink = document.getElementById("loginLink");
+    const userLogado = document.getElementById("userLogado");
+
+    if (usuarioLogado) {
+      if (loginLink) loginLink.style.display = "none";
+      if (userLogado) {
+        userLogado.innerHTML = `
+          Bem-vindo, ${usuarioLogado} |
+          <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
+        `;
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html"; 
+    }
+  
+
     atualizarCarrinho();
   </script>
 
@@ -33,3 +140,4 @@
   </footer>
 </body>
 </html>
+

@@ -137,6 +137,60 @@ body {
   .botao-comprar:hover {
     background-color: #004d40;
   }
+
+  .quantidade-container{
+    margin: 10px 0;
+  }
+
+  .quantidade-container input{
+    width: 60px;
+    padding: 5px;
+    font-size: 1rem;
+    margin-left: 10px;
+  }
+
+  .produtos-diversos {
+    padding: 40px;
+    background-color: #f9f9f9;
+  }
+  
+  .produtos-diversos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .lista-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .produto {
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    background: white;
+  }
+  
+  .produto img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .produto .botao {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #f57c00;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
   
   footer {
     background-color: #26a69a;

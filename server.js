@@ -42,3 +42,15 @@ app.post('/api/login', (req, res) => {
     res.status(401).send('Email ou senha incorretos!');
   }
 });
+
+app.get('/api/produtos/diversos', (req, res) => {
+  if (!fs.existsSync('produtos.json')) {
+    return res.status(404).send('Arquivo de produtos não encontrado!');
+  }
+
+  const produtos = JSON.parse(fs.readFileSync('produtos.json'));
+  const diversos = produtos.filter(p => p.categoria === 'diversos');
+
+  res.json(diversos);
+});
+

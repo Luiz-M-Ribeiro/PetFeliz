@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Produtos Diversos - Pet Feliz</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>...</header>
+    
+  <main>
+    <h2>Produtos Diversos</h2>
+    <div id="lista-diversos" class="produtos-grid"></div>
+  </main>
+
+  <footer>...</footer>
+
+<script>
+    fetch('http://localhost:3000/api/produtos/diversos')
+      .then(res => res.json())
+      .then(produtos => {
+        const lista = document.getElementById('lista-diversos');
+        produtos.forEach(p => {
+          lista.innerHTML += `
+            <div class="produto">
+              <img src="${p.imagem}" alt="${p.nome}">
+              <h3>${p.nome}</h3>
+              <p>${p.descricao}</p>
+              <span>R$ ${p.preco.toFixed(2)}</span>
+            </div>
+          `;
+        });
+      });
+  </script>
+
+  <script src="script.js"></script> <!-- ou pode incluir o fetch diretamente aqui -->
+
+  <script>
+    fetch('/api/produtos/diversos')
+      .then(res => res.json())
+      .then(produtos => {
+        const container = document.getElementById('lista-diversos');
+        produtos.forEach(p => {
+          container.innerHTML += `
+            <div class="produto">
+              <img src="${p.imagem}" alt="${p.nome}" />
+              <h3>${p.nome}</h3>
+              <p>${p.descricao}</p>
+              <span>R$ ${p.preco.toFixed(2)}</span>
+            </div>
+          `;
+        });
+      })
+      .catch(erro => console.error('Erro ao carregar produtos:', erro));
+  </script>
+  
+</body>
+</html>
+
+
+

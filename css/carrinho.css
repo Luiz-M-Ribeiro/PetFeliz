@@ -62,6 +62,7 @@ footer {
     justify-content: flex-end;
     width: 100%;
     position: absolute;
+    bottom: 0;
   }
   
 #carrinho {

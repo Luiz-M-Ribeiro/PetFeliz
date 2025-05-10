@@ -7,6 +7,7 @@
   <title>Detalhes do Produto - Pet Feliz</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header>
     <div class="container">
@@ -38,7 +39,7 @@
       let produtoHTML = '';
 
       switch (produtoId) {
-        
+
         case 'ração-premium':
           produtoHTML = `
             <img src="img/ração.jpg" alt="Ração Premium">
@@ -98,9 +99,10 @@
                   <label for="quantidade">Quantidade:</label>
                   <input type="number" id="quantidade-cama" min="1" value="1">
                 </div>
-              <button onclick="adicionarAoCarrinho('Cama Pet Confortável', 159.90 document.getElementById('quantidade-cama').value)">Adicionar ao Carrinho</button>
+              <button onclick="adicionarAoCarrinho('Cama Pet Confortável', 159.90, document.getElementById('quantidade-cama').value)">Adicionar ao Carrinho</button>
             </div>
           `;
+          break;
 
           case 'capa-chuva':
           produtoHTML = `
@@ -113,9 +115,10 @@
                   <label for="quantidade">Quantidade:</label>
                   <input type="number" id="quantidade-capa-de-chuva" min="1" value="1">
                 </div>
-              <button onclick="adicionarAoCarrinho('Capa de Chuva para Pet', 59,90 document.getElementById('quantidade-capa-de-chuva').value)">Adicionar ao Carrinho</button>
+              <button onclick="adicionarAoCarrinho('Capa de Chuva para Pet', 59.90, document.getElementById('quantidade-capa-de-chuva').value)">Adicionar ao Carrinho</button>
             </div>
           `;
+          break;
 
           case 'fantasia-chuck':
           produtoHTML = `
@@ -128,9 +131,10 @@
                   <label for="quantidade">Quantidade:</label>
                   <input type="number" id="quantidade-fantasia-chuck" min="1" value="1">
                 </div>
-              <button onclick="adicionarAoCarrinho('Fantasia do Chuck.', 129,90 document.getElementById('quantidade-fantasia-chuck').value)">Adicionar ao Carrinho</button>
+              <button onclick="adicionarAoCarrinho('Fantasia do Chuck.', 129.90, document.getElementById('quantidade-fantasia-chuck').value)">Adicionar ao Carrinho</button>
             </div>
           `;
+          break;
 
 
           case 'funcinheira-couro':
@@ -144,7 +148,7 @@
                   <label for="quantidade">Quantidade:</label>
                   <input type="number" id="quantidade-funcinheira-couro" min="1" value="1">
                 </div>
-              <button onclick="adicionarAoCarrinho('Funcinheira de Couro', 29,90 document.getElementById('quantidade-funcinheira-couro').value)">Adicionar ao Carrinho</button>
+              <button onclick="adicionarAoCarrinho('Funcinheira de Couro', 29.90, document.getElementById('quantidade-funcinheira-couro').value)">Adicionar ao Carrinho</button>
             </div>
           `;
 
@@ -195,8 +199,10 @@ const usuarioLogado = localStorage.getItem("usuarioLogado");
       window.location.href = "index.html";
     }
 </script>
+
     <footer>
     <p>&copy; 2025 Pet Feliz - Todos os direitos reservados</p>
   </footer>
+
   </body>
   </html>

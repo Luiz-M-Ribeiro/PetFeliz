@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Produto - Pet Feliz</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>🐾 Pet Feliz</h1>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="produto.html">Produtos</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="login.html" id="loginLink">Entrar</a>
+        <span id="userLogado"></span>
+      </nav>
+    </div>
+  </header>
+
+  <section class="produto-detalhe" id="detalhesProduto"></section>
+
+  <script>
+    window.onload = function() {
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const produtoId = urlParams.get('produto');
+
+      exibirProduto(produtoId);
+    }
+
+    function exibirProduto(produtoId) {
+      const detalhesProduto = document.getElementById('detalhesProduto');
+
+      let produtoHTML = '';
+
+      switch (produtoId) {
+        
+        case 'ração-premium':
+          produtoHTML = `
+            <img src="img/ração.jpg" alt="Ração Premium">
+            <div class="info">
+              <h2>Ração Premium - 10kg</h2>
+              <p>Composta por ingredientes selecionados para uma nutrição completa. Ideal para cães adultos de médio e grande porte.</p>
+              <span class="preco">R$ 89,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-racao" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Ração Premium - 10kg', 89.90, document.getElementById('quantidade-racao').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+          
+        case 'coleira-estilosa':
+          produtoHTML = `
+            <img src="img/coleira.jpeg" alt="Coleira Estilosa">
+            <div class="info">
+              <h2>Coleira Estilosa</h2>
+              <p>Uma coleira estilosa de couro vermelha e bege por dentro, com um estilo de um osso com diamantes.</p>
+              <span class="preco">R$ 39,90</span>
+                <div class="quantidade-container">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade-coleira" min="1" value="1">
+                  </div>
+              <button onclick="adicionarAoCarrinho('Coleira Estilosa', 39.90, document.getElementById('quantidade-coleira').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'brinquedo-interativo':
+          produtoHTML = `
+            <img src="img/brinquedo.jpeg" alt="Brinquedo Interativo">
+            <div class="info">
+              <h2>Brinquedo Interativo</h2>
+              <p>Um brinquedo interativo para o seu pet brincar e morder o dia todo.</p>
+              <span class="preco">R$ 49,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-brinquedo" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Brinquedo Interativo', 49.90, document.getElementById('quantidade-brinquedo').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'cama-pet':
+          produtoHTML = `
+            <img src="img/cama.jpeg" alt="Cama Pet Confortável">
+            <div class="info">
+              <h2>Cama Pet Confortável</h2>
+              <p>Uma cama confortável para o seu pet dormir, tamanhos variáveis.</p>
+              <span class="preco">R$ 159,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-cama" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Cama Pet Confortável', 159.90 document.getElementById('quantidade-cama').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+
+          case 'capa-chuva':
+          produtoHTML = `
+            <img src="img/capa-de-chuva.jpg" alt="Capa de Chuva.">
+            <div class="info">
+              <h2>Capa de Chuva para Pet</h2>
+              <p>Proteja seu pet nos dias chuvosos com esta capa confortável e estilosa.</p>
+              <span class="preco">R$ 59,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-capa-de-chuva" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Capa de Chuva para Pet', 59,90 document.getElementById('quantidade-capa-de-chuva').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+
+          case 'fantasia-chuck':
+          produtoHTML = `
+            <img src="img/fantasia-chuck.jpg" alt="Fantasia do Chuck.">
+            <div class="info">
+              <h2>Fantasia do Chuck.</h2>
+              <p>Fantasia do Chuck para usar no dia de HelloWeen e divertida.</p>
+              <span class="preco">R$ 129,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-fantasia-chuck" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Fantasia do Chuck.', 129,90 document.getElementById('quantidade-fantasia-chuck').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+
+
+          case 'funcinheira-couro':
+          produtoHTML = `
+            <img src="img/funcinheira-couro.jpg" alt="Funcinheira de Couro">
+            <div class="info">
+              <h2>Funcinheira de Couro</h2>
+              <p>Estilo e proteção para os outros pet's e para as pessoas, durante passeios ao ar livre.</p>
+              <span class="preco">R$ 29,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-funcinheira-couro" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Funcinheira de Couro', 29,90 document.getElementById('quantidade-funcinheira-couro').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+
+          break;
+        default:
+          produtoHTML = `<p>Produtos diversos para o seu PET.</p>`;
+      }
+
+      detalhesProduto.innerHTML = produtoHTML;
+    }
+
+    function adicionarAoCarrinho(nomeProduto, precoProduto, quantidade) {
+  quantidade = parseInt(quantidade) || 1;
+
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  const produtoExistente = carrinho.find(item => item.nome === nomeProduto);
+
+  if (produtoExistente) {
+    produtoExistente.quantidade += quantidade;
+  } else {
+    carrinho.push({ nome: nomeProduto, preco: precoProduto, quantidade });
+  }
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  const total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+  localStorage.setItem("total", total.toFixed(2));
+
+  alert(`${quantidade}x ${nomeProduto} foi/foram adicionados ao carrinho!`);
+}
+
+const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const loginLink = document.getElementById("loginLink");
+    const userLogado = document.getElementById("userLogado");
+
+    if (usuarioLogado) {
+      if (loginLink) loginLink.style.display = "none";
+      if (userLogado) {
+        userLogado.innerHTML = `
+          Bem-vindo, ${usuarioLogado} |
+          <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
+        `;
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html";
+    }
+</script>
+    <footer>
+    <p>&copy; 2025 Pet Feliz - Todos os direitos reservados</p>
+  </footer>
+  </body>
+  </html>

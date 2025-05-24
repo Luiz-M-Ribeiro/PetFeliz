@@ -6,6 +6,7 @@
   <title>Resumo do Carrinho</title>
   <link rel="stylesheet" href="css/carrinho.css">
 </head>
+
 <body>
   <header>
     <div class="container">
@@ -23,7 +24,7 @@
   <h1>Seu Carrinho</h1>
   <ul id="carrinho"></ul>
   <p>Total: R$ <span id="total">0.00</span></p>
-  <button onclick="finalizarCompra()" id="botaoFinalizar">Finalizar Compra</button>
+  <button class="botaoFinalizarCompra" onclick="finalizarCompra()" id="botaoFinalizar">Finalizar Compra</button>
 
   <script src="script.js"></script>
   <script>
@@ -48,7 +49,6 @@
   alert(`${quantidade}x ${nomeProduto} foi/foram adicionado(s) ao carrinho!`);
 }
 
-
     function atualizarTotalCarrinho(carrinho){
       let total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
       localStorage.setItem("total", total.toFixed(2));
@@ -72,7 +72,7 @@
         const li = document.createElement("li");
         li.innerHTML = `
           ${item.nome} - R$ ${item.preco.toFixed(2)} x ${item.quantidade}
-          <button onclick="removerDoCarrinho(${index})">Remover</button>
+          <button class="botaoRemover" onclick="removerDoCarrinho(${index})">Remover</button>
         `;
         listaCarrinho.appendChild(li);
       });
@@ -135,13 +135,13 @@
       window.location.href = "index.html"; 
     }
   
-
     atualizarCarrinho();
   </script>
 
   <footer>
     <p>&copy; 2025 Pet Feliz - Todos os direitos reservados</p>
   </footer>
+
 </body>
 </html>
 

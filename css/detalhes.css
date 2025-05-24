@@ -67,6 +67,17 @@ nav {
     max-width: 500px;
   }
 
+.quantidade-container{
+    margin: 10px 0;
+  }
+
+.quantidade-container input{
+    width: 60px;
+    padding: 5px;
+    font-size: 1rem;
+    margin-left: 10px;
+  }
+
 footer {
     background-color: #26a69a;
     color: white;

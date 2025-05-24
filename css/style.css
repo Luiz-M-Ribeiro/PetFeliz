@@ -199,6 +199,13 @@ body {
     border-radius: 5px;
     text-decoration: none;
   }
+
+  hr {
+    margin-top: 50px;
+    height: 1px;
+    background: rgb(220, 220, 220);
+    
+  }
   
   
   footer {

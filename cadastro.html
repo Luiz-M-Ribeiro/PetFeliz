@@ -6,11 +6,11 @@
   <title>Formulário de Cadastro</title>
   <link rel="stylesheet" href="css/cadastro.css">
 </head>
-<body>
 
+<body>
   <div class="container">
     <h2>Cadastro</h2>
-    <form id="formCadastro" action="/cadastro.html" method="post">
+    <form id="formCadastro">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" required>
 
@@ -24,54 +24,33 @@
       <input type="password" id="confirmar-senha" name="confirmar-senha" required>
 
       <button type="submit">Cadastrar</button>
-      <span>
-      <a href="index.html" class="botao">Voltar</a>
-      </span>
-      
+      <span><a href="index.html" class="botao">Voltar</a></span>
     </form>
   </div>
 
   <script>
-    document.getElementById('formCadastro').addEventListener('submit', async function(e) {
+    document.getElementById('formCadastro').addEventListener('submit', function(e) {
       e.preventDefault();
-    
+
       const nome = document.getElementById('nome').value;
       const email = document.getElementById('email').value;
       const senha = document.getElementById('senha').value;
       const confirmarSenha = document.getElementById('confirmar-senha').value;
-    
+
       if (senha !== confirmarSenha) {
         alert('As senhas não coincidem!');
         return;
       }
-    
-      const usuario = {
-        nome: nome,
-        email: email,
-        senha: senha
-      };
-      try {
-        const resposta = await fetch('/api/cadastro',{
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(usuario)
-        });
 
-        const resultado = await resposta.text();
-        alert(resultado);
-        window.location.href = 'login.html';
-      } catch (error) {
-        console.error('Erro ao cadastrar:', error);
-        alert('Erro ao cadastrar!');
-      }
+      // Salvar no localStorage
+      localStorage.setItem('nomeUsuario', nome);
+      localStorage.setItem('emailUsuario', email);
+      localStorage.setItem('senhaUsuario', senha);
+
+      alert('Cadastro realizado com sucesso!');
+      window.location.href = 'login.html';
     });
-
-    </script>
-
+  </script>
 </body>
 </html>
-
-
 

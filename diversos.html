@@ -53,6 +53,27 @@
       })
       .catch(erro => console.error('Erro ao carregar produtos:', erro));
   </script>
+
+  <script>
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const loginLink = document.getElementById("loginLink");
+    const userLogado = document.getElementById("userLogado");
+
+    if (usuarioLogado) {
+      if (loginLink) loginLink.style.display = "none";
+      if (userLogado) {
+        userLogado.innerHTML = `
+          Bem-vindo, ${usuarioLogado} |
+          <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
+        `;
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html"; 
+    }
+  </script>
   
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,15 @@
       <h1>🐾 Pet Feliz</h1>
       <nav>
         <a href="index.html">Início</a>
-        <a href="produto.html">Produtos</a>
+        <div class="menuProduto">
+          <a href="produto.html">Produtos</a>
+          <div class="subProduto">
+
+            <a href="#">Cachorros</a>
+            <a href="#">Gatos</a>
+
+          </div>
+        </div>
         <a href="carrinho.html">Carrinho</a>
         <a href="login.html" id="loginlink">Entrar</a>
         <span id="userLogado"></span>
@@ -98,7 +107,7 @@
     const usuarioLogado = localStorage.getItem("usuarioLogado");
     const loginLink = document.getElementById("loginLink");
     const userLogado = document.getElementById("userLogado");
-    
+
     if (usuarioLogado) {
       if (loginLink) loginLink.style.display = "none";
       if (userLogado) {
@@ -108,10 +117,10 @@
         `;
       }
     }
-    
+
     function logout() {
       localStorage.removeItem("usuarioLogado");
-      window.location.href = "index.html"; // voltar pra home
+      window.location.href = "index.html"; 
     }
     </script>
     

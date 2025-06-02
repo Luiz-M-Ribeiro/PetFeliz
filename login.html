@@ -15,7 +15,7 @@
         <a href="index.html">Início</a>
         <a href="produto.html">Produtos</a>
         <a href="carrinho.html">Carrinho</a>
-        <a href="login.html" id="loginlink">Entrar</a>
+        <a href="login.html" id="loginLink">Entrar</a>
         <span id="userLogado"></span>
       </nav>
     </div>
@@ -23,7 +23,7 @@
 
   <div class="login-container">
     <h2>Entrar</h2>
-    <form action="/login" method="POST">
+    <form>
       <div class="input-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -38,58 +38,48 @@
   </div>
 
   <script>
-    document.querySelector('form').addEventListener('submit', async function(e) {
+    // Login simples com localStorage
+    document.querySelector('form').addEventListener('submit', function(e) {
       e.preventDefault();
-    
+
       const email = document.getElementById('email').value;
       const senha = document.getElementById('senha').value;
-    
-      try {
-        const resposta = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, senha })
-        });
-    
-        if (resposta.ok) {
-          const dados = await resposta.json();
-          alert(dados.mensagem);
-          localStorage.setItem('usuarioLogado', dados.nome);
-          window.location.href = 'index.html'; // Vai pra página inicial
-        } else {
-          const erro = await resposta.text();
-          alert(erro);
-        }
-      } catch (error) {
-        console.error('Erro ao fazer login:', error);
-        alert('Erro ao fazer login!');
+
+      const emailSalvo = localStorage.getItem('emailUsuario');
+      const senhaSalva = localStorage.getItem('senhaUsuario');
+      const nomeSalvo = localStorage.getItem('nomeUsuario');
+
+      if (email === emailSalvo && senha === senhaSalva) {
+        alert('Login realizado com sucesso!');
+        localStorage.setItem('usuarioLogado', nomeSalvo);
+        window.location.href = 'index.html';
+      } else {
+        alert('E-mail ou senha incorretos!');
       }
     });
 
-const usuarioLogado = localStorage.getItem("usuarioLogado");
-const loginLink = document.getElementById("loginLink");
-const userLogado = document.getElementById("userLogado");
+    // Mostra o nome do usuário se já estiver logado
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const loginLink = document.getElementById("loginLink");
+    const userLogado = document.getElementById("userLogado");
 
-if (usuarioLogado) {
-  if (loginLink) loginLink.style.display = "none";
-  if (userLogado) {
-    userLogado.innerHTML = `
-      Bem-vindo, ${usuarioLogado} |
-      <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
-    `;
-  }
-}
+    if (usuarioLogado) {
+      if (loginLink) loginLink.style.display = "none";
+      if (userLogado) {
+        userLogado.innerHTML = `
+          Bem-vindo, ${usuarioLogado} |
+          <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
+        `;
+      }
+    }
 
-function logout() {
-  localStorage.removeItem("usuarioLogado");
-  window.location.href = "index.html"; // voltar pra home
-}
-
-    </script>
-    
+    function logout() {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html";
+    }
+  </script>
 </body>
 </html>
+
 
 

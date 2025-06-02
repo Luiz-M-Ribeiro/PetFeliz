@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,122 +27,35 @@
   <p>Total: R$ <span id="total">0.00</span></p>
   <button class="botaoFinalizarCompra" onclick="finalizarCompra()" id="botaoFinalizar">Finalizar Compra</button>
 
-  <script src="script.js"></script>
-  <script>
-    
-    function adicionarAoCarrinho(nomeProduto, precoProduto, quantidade) {
-  quantidade = parseInt(quantidade) || 1;
-
-  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-  const produtoExistente = carrinho.find(item => item.nome === nomeProduto);
-
-  if (produtoExistente) {
-    produtoExistente.quantidade += quantidade;
-  } else {
-    carrinho.push({ nome: nomeProduto, preco: precoProduto, quantidade });
-  }
-
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  const total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
-  localStorage.setItem("total", total.toFixed(2));
-
-  alert(`${quantidade}x ${nomeProduto} foi/foram adicionado(s) ao carrinho!`);
-}
-
-    function atualizarTotalCarrinho(carrinho){
-      let total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
-      localStorage.setItem("total", total.toFixed(2));
-    }
-
-    function atualizarCarrinho() {
-      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-      const listaCarrinho = document.getElementById("carrinho");
-      const totalElemento = document.getElementById("total");
-
-      listaCarrinho.innerHTML = "";
-
-      if (carrinho.length === 0) {
-
-        listaCarrinho.innerHTML = "<li>Seu carrinho está vazio.</li>";
-
-      }else{
-
-      carrinho.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          ${item.nome} - R$ ${item.preco.toFixed(2)} x ${item.quantidade}
-          <button class="botaoRemover" onclick="removerDoCarrinho(${index})">Remover</button>
-        `;
-        listaCarrinho.appendChild(li);
-      });
-    }
-
-      let total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
-      totalElemento.textContent = total.toFixed(2);
-  }    
-
-    function removerDoCarrinho(index) {
-      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      let total = parseFloat(localStorage.getItem("total")) || 0;
-
-      total -= carrinho[index].preco * carrinho[index].quantidade;
-      carrinho.splice(index, 1);
-
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      localStorage.setItem("total", total.toFixed(2));
-
-      atualizarCarrinho();
-    }
-
-    function finalizarCompra() {
-      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      let total = parseFloat(localStorage.getItem("total")) || 0;
-
-      if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-      }
-
-      alert(`Compra realizada com sucesso!\nTotal: R$ ${total.toFixed(2)}\nProdutos: ${carrinho.length}`);
-
-      localStorage.removeItem('carrinho');
-      localStorage.removeItem('total');
-
-      atualizarCarrinho();
-
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 2000);
-    }
-
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-    const loginLink = document.getElementById("loginLink");
-    const userLogado = document.getElementById("userLogado");
-
-    if (usuarioLogado) {
-      if (loginLink) loginLink.style.display = "none";
-      if (userLogado) {
-        userLogado.innerHTML = `
-          Bem-vindo, ${usuarioLogado} |
-          <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
-        `;
-      }
-    }
-
-    function logout() {
-      localStorage.removeItem("usuarioLogado");
-      window.location.href = "index.html"; 
-    }
   
-    atualizarCarrinho();
-  </script>
-
   <footer>
     <p>&copy; 2025 Pet Feliz - Todos os direitos reservados</p>
   </footer>
 
+  <script src="script.js"></script>
+<script>
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const loginLink = document.getElementById("loginLink");
+  const userLogado = document.getElementById("userLogado");
+
+  if (usuarioLogado) {
+    if (loginLink) loginLink.style.display = "none";
+    if (userLogado) {
+      userLogado.innerHTML = `
+        Bem-vindo, ${usuarioLogado} |
+        <a href="#" onclick="logout()" style="color: yellow;">Sair</a>
+      `;
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("usuarioLogado");
+    window.location.href = "index.html"; 
+  }
+
+  atualizarCarrinho(); // Chamada vinda do script.js
+</script>
+  
 </body>
 </html>
 

@@ -18,8 +18,8 @@
           <a href="produto.html">Produtos</a>
           <div class="subProduto">
 
-            <a href="#">Cachorros</a>
-            <a href="#">Gatos</a>
+            <a href="cachorro.html">Cachorros</a>
+            <a href="gato.html">Gatos</a>
 
           </div>
         </div>
@@ -83,27 +83,67 @@
     <div class="produtos-grid">
 
       <!-- Card 1 -->
-      <div class="produto-card">
-        <img src="img/fantasia-chuck.jpg" alt="Fantasia do Chuck">
-        <h3>Fantasia do Chuck.</h3>
-        <p>Fantasia do Chuck para usar no dia de HelloWeen e divertida.</p>
-        <span class="preco">R$ 129,90</span>
-        <a href="detalhes.html?produto=fantasia-chuck" class="botao">Ver Detalhes</a>
+      <div class="produto">
+        <img src="img/laser-para-gato.jpg" alt="Laser para os Gatos">
+        <h3>Um laser para gato.</h3>
+        <p>Um laser interativo para brincar com o seu gato enquanto você esta entediado.</p>
+        <span class="preco">R$ 39,90</span>
+        <a href="detalhes.html?produto=laser-gato" class="botao">Ver Detalhes</a>
       </div>
 
       <!-- Card 2 -->
-      <div class="produto-card">
-        <img src="img/funcinheira-couro.jpg" alt="Funcinheira de Couro">
-        <h3>Funcinheira de Couro</h3>
-        <p>Estilo e proteção para os outros pet's e para as pessoas, durante passeios ao ar livre.</p>
-        <span class="preco">R$ 29,90</span>
-        <a href="detalhes.html?produto=funcinheira-couro" class="botao">Ver Detalhes</a>
+      <div class="produto">
+        <img src="img/racao-especial.jpg" alt="Ração Especial">
+        <h3>Uma ração especial.</h3>
+        <p>Uma ração especial para o seu gato gordo.</p>
+        <span class="preco">R$ 49,90</span>
+        <a href="detalhes.html?produto=racao-especial" class="botao">Ver Detalhes</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="produto">
+        <img src="img/torre-rosa.jpg" alt="Torre de Brinquedo">
+        <h3>Torre Rosa.</h3>
+        <p>Uma torre rosa para o seu gato brincar com as bolinhas dentro.</p>
+        <span class="preco">R$ 35,40</span>
+        <a href="detalhes.html?produto=torre-rosa" class="botao">Ver Detalhes</a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="produto">
+        <img src="img/whiskas.jpg" alt="Sache de Gato">
+        <h3>Uma ração umida.</h3>
+        <p>Uma ração umida para o gato.</p>
+        <span class="preco">R$ 39,90</span>
+        <a href="detalhes.html?produto=sache-gato" class="botao">Ver Detalhes</a>
       </div>
 
     </div>
   </section>
 
-  <script>
+    <hr>
+<section class="sobre">
+  <h4>Sobre o Site</h4>
+  <p>
+    O <strong>Pet Feliz</strong> é uma loja virtual criada especialmente para quem ama animais de estimação. Nosso objetivo é proporcionar produtos de alta qualidade que garantam saúde, conforto e alegria para o seu melhor amigo.
+    Aqui você encontra uma seleção completa de rações, brinquedos, acessórios, camas e muito mais — tudo escolhido com carinho e atenção às necessidades dos pets e seus tutores.
+  </p>
+  <p>
+    Desenvolvemos este site pensando em você: com navegação simples, layout intuitivo e uma experiência agradável. Com poucos cliques, você encontra o que procura, aproveita promoções exclusivas e finaliza suas compras de forma rápida e segura.
+  </p>
+</section>
+
+<section class="sobre">
+  <h4>Sobre Nós</h4>
+  <p>
+    Somos apaixonados por animais e acreditamos que eles merecem todo cuidado e carinho do mundo. A equipe do <strong>Pet Feliz</strong> é formada por profissionais dedicados que compartilham essa paixão e trabalham para levar os melhores produtos até você.
+  </p>
+  <p>
+    Nosso compromisso vai além das vendas: queremos ser parceiros no cuidado diário do seu pet, oferecendo sempre as melhores opções, com preços justos, atendimento atencioso e entrega eficiente. Conte conosco para tornar a vida do seu pet ainda mais feliz!
+  </p>
+</section>
+
+ <script>
     const usuarioLogado = localStorage.getItem("usuarioLogado");
     const loginLink = document.getElementById("loginLink");
     const userLogado = document.getElementById("userLogado");
@@ -123,28 +163,6 @@
       window.location.href = "index.html"; 
     }
     </script>
-    
-    <hr>
-<section class="sobre">
-  <h2>Sobre o Site</h2>
-  <p>
-    O <strong>Pet Feliz</strong> é uma loja virtual criada especialmente para quem ama animais de estimação. Nosso objetivo é proporcionar produtos de alta qualidade que garantam saúde, conforto e alegria para o seu melhor amigo.
-    Aqui você encontra uma seleção completa de rações, brinquedos, acessórios, camas e muito mais — tudo escolhido com carinho e atenção às necessidades dos pets e seus tutores.
-  </p>
-  <p>
-    Desenvolvemos este site pensando em você: com navegação simples, layout intuitivo e uma experiência agradável. Com poucos cliques, você encontra o que procura, aproveita promoções exclusivas e finaliza suas compras de forma rápida e segura.
-  </p>
-</section>
-
-<section class="sobre">
-  <h2>Sobre Nós</h2>
-  <p>
-    Somos apaixonados por animais e acreditamos que eles merecem todo cuidado e carinho do mundo. A equipe do <strong>Pet Feliz</strong> é formada por profissionais dedicados que compartilham essa paixão e trabalham para levar os melhores produtos até você.
-  </p>
-  <p>
-    Nosso compromisso vai além das vendas: queremos ser parceiros no cuidado diário do seu pet, oferecendo sempre as melhores opções, com preços justos, atendimento atencioso e entrega eficiente. Conte conosco para tornar a vida do seu pet ainda mais feliz!
-  </p>
-</section>
 
   <footer>
     <p>&copy; 2025 Pet Feliz - Todos os direitos reservados</p>

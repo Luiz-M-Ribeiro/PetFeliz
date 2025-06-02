@@ -78,6 +78,42 @@ nav {
     margin-left: 10px;
   }
 
+    .menuProduto {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.subProduto {
+  display: none;
+  position: absolute;
+  top: 100%; /* abaixo do botão */
+  left: 0;
+  background-color: #00796b;
+  padding: 8px 0;
+  border-radius: 6px;
+  flex-direction: column;
+  min-width: 120px;
+  z-index: 10;
+}
+
+.subProduto a {
+  display: block;
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.subProduto a:hover {
+  background-color: #004d40;
+}
+
+.menuProduto:hover .subProduto {
+  display: flex;
+} 
+
 footer {
     background-color: #26a69a;
     color: white;

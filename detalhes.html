@@ -14,7 +14,15 @@
       <h1>🐾 Pet Feliz</h1>
       <nav>
         <a href="index.html">Início</a>
-        <a href="produto.html">Produtos</a>
+        <div class="menuProduto">
+          <a href="produto.html">Produtos</a>
+          <div class="subProduto">
+
+            <a href="cachorro.html">Cachorros</a>
+            <a href="gato.html">Gatos</a>
+
+          </div>
+        </div>
         <a href="carrinho.html">Carrinho</a>
         <a href="login.html" id="loginLink">Entrar</a>
         <span id="userLogado"></span>
@@ -104,7 +112,7 @@
           `;
           break;
 
-          case 'capa-chuva':
+        case 'capa-chuva':
           produtoHTML = `
             <img src="img/capa-de-chuva.jpg" alt="Capa de Chuva.">
             <div class="info">
@@ -120,7 +128,7 @@
           `;
           break;
 
-          case 'fantasia-chuck':
+        case 'fantasia-chuck':
           produtoHTML = `
             <img src="img/fantasia-chuck.jpg" alt="Fantasia do Chuck.">
             <div class="info">
@@ -136,8 +144,7 @@
           `;
           break;
 
-
-          case 'funcinheira-couro':
+        case 'funcinheira-couro':
           produtoHTML = `
             <img src="img/funcinheira-couro.jpg" alt="Funcinheira de Couro">
             <div class="info">
@@ -152,6 +159,134 @@
             </div>
           `;
           break;
+
+        case 'areia-gato':
+          produtoHTML = `
+            <img src="img/areia-para-gato.jpg" alt="Areia para Gatos">
+            <div class="info">
+              <h3>Areia para por na caixa do seu gato.</h3>
+              <p>Areia para o seu gato fazer as necessidades.</p>
+              <span class="preco">R$ 69,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-areia-gato" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Areia para Gato', 69.90, document.getElementById('quantidade-areia-gato').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'arranhador-gato':
+          produtoHTML = `
+            <img src="img/arranhador.jpg" alt="Arranhador para Gatos">
+            <div class="info">
+              <h3>Arranhador para o seu gato.</h3>
+              <p>Arranhador para o seu gato são formas de proporcionar integração, saciando os instintos selvagens e liberando hormônios do bem-estar. </p>
+              <span class="preco">R$ 157,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-arranhador-gato" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Arranhador para gato', 157.90, document.getElementById('quantidade-arranhador-gato').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'caixa-areia':
+          produtoHTML = `      
+            <img src="img/caixa_de_areia_preta_para_gatos.jpg" alt="Caixa de areia">
+            <div class="info">
+              <h3>Caixa de areia.</h3>
+              <p>Uma caixa de areia para o seu gato fazer as necessidades.</p>
+              <span class="preco">R$ 18,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-caixa-areia" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Caixa de Areia', 18.90, document.getElementById('quantidade-caixa-areia').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'fantasia-gato':
+          produtoHTML = `      
+            <img src="img/fantasia-de-gato.jpg" alt="Fantasia de Gato">
+            <div class="info">
+              <h3>Fantasia de El Gato.</h3>
+              <p>Uma Fantasia bem legal para por no seu gato.</p>
+              <span class="preco">R$ 59,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-fantasia-gato" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Fantasia para gato', 59.90, document.getElementById('quantidade-fantasia-gato').value)">Adicionar ao Carrinho</button>
+            </div>
+          `;
+          break;
+
+        case 'laser-gato':
+          produtoHTML = `
+            <img src="img/laser-para-gato.jpg" alt="Laser para os Gatos">
+            <div class="info">
+              <h3>Um laser para gato.</h3>
+              <p>Um laser interativo para brincar com o seu gato enquanto você esta entediado.</p>
+              <span class="preco">R$ 39,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-laser-gato" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Laser para gato', 39.90, document.getElementById('quantidade-laser-gato').value)">Adicionar ao Carrinho</button>
+            </div>
+            `;
+            break;
+
+        case 'racao-especial':
+          produtoHTML = `
+            <img src="img/racao-especial.jpg" alt="Ração Especial">
+            <div class="info">
+              <h3>Uma ração especial.</h3>
+              <p>Uma ração especial para o seu gato gordo.</p>
+              <span class="preco">R$ 49,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-racao-especial" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Ração Especial', 49.90, document.getElementById('quantidade-racao-especial').value)">Adicionar ao Carrinho</button>
+            </div>
+            `;
+            break;
+
+        case 'torre-rosa':
+          produtoHTML = `
+            <img src="img/torre-rosa.jpg" alt="Torre de Brinquedo">
+            <div class="info">
+              <h3>Torre Rosa.</h3>
+              <p>Uma torre rosa para o seu gato brincar com as bolinhas dentro.</p>
+              <span class="preco">R$ 35,40</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-torre-rosa" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Torre Rosa', 35.40, document.getElementById('quantidade-torre-rosa').value)">Adicionar ao Carrinho</button>
+            </div>
+            `;
+            break;
+
+        case 'sache-gato':
+          produtoHTML = `
+            <img src="img/whiskas.jpg" alt="Sache de Gato">
+            <div class="info">
+              <h3>Uma ração umida.</h3>
+              <p>Uma ração umida para o gato.</p>
+              <span class="preco">R$ 39,90</span>
+                <div class="quantidade-container">
+                  <label for="quantidade">Quantidade:</label>
+                  <input type="number" id="quantidade-sache-gato" min="1" value="1">
+                </div>
+              <button onclick="adicionarAoCarrinho('Sache para gato', 39.90, document.getElementById('quantidade-sache-gato').value)">Adicionar ao Carrinho</button>
+            </div>
+            `;
+            break;
           
         default:
           produtoHTML = `<p>Produtos diversos para o seu PET.</p>`;
